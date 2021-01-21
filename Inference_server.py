@@ -17,12 +17,12 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/")
+def index():
+  return "<h1>Welcome to CodingX</h1>"
+
 @cross_origin()
 def helloWorld():
   return "Hello, cross-origin-world!"
-
-
-
 
 
 def url_to_image(url):
@@ -46,8 +46,9 @@ def bin_pred():
     img_url = data[0]['url']
     image = url_to_image(img_url)
     result = binary_model.predict(efficientnet.preprocess_input(image).reshape(1, 224, 224, 3))
+    print(result)
     prediction = result > 0.5
-
+    print(prediction)
     return f"{prediction[0]}"
 
 
@@ -63,9 +64,18 @@ def bin_pred():
 #
 #    return f"{prediction[0]}"
 
+
+
+
+
+
 if __name__ == '__main__':
-    port = os.environ.get('PORT')
-    if port:
-        app.run(host='0.0.0.0', port=int(port))
-    else:
-        app.run(port=9000, debug=True)
+      app.run(threaded=True, port=5000)
+  
+  
+  
+    # port = os.environ.get('PORT')
+    # if port:
+    #     app.run(host='0.0.0.0', port=int(port))
+    # else:
+    #     app.run(port=9000, debug=True)
