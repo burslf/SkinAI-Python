@@ -1,0 +1,1 @@
+web: python Inference_server.py
