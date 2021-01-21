@@ -3,12 +3,27 @@ import os
 from cv2 import cv2
 import numpy as np
 import urllib.request
+from flask_cors import CORS, cross_origin
 
 from Binary_model import *
 from tensorflow.keras.applications import efficientnet
 
 
 app = Flask(__name__)
+
+
+
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+@app.route("/")
+@cross_origin()
+def helloWorld():
+  return "Hello, cross-origin-world!"
+
+
+
+
 
 def url_to_image(url):
     # download the image, convert it to a NumPy array, and then read
