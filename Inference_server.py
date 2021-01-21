@@ -18,7 +18,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/")
 def index():
-  return "<h1>Welcome to CodingX</h1>"
+  return "<h1>Welcome, this is a skin cancer diagnosis server</h1>"
 
 @cross_origin()
 def helloWorld():
@@ -52,7 +52,6 @@ def bin_pred():
     return f"{prediction[0]}"
 
 
-
 #@app.route('/multi_pred', methods=['POST'])
 #def multi_pred():
 #
@@ -65,15 +64,9 @@ def bin_pred():
 #    return f"{prediction[0]}"
 
 
-
-
-
-
 if __name__ == '__main__':
       app.run(threaded=True, port=5000)
-  
-  
-  
+
     # port = os.environ.get('PORT')
     # if port:
     #     app.run(host='0.0.0.0', port=int(port))
