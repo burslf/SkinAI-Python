@@ -1,1 +1,1 @@
-web: python Inference_server.py
+web: uwsgi uwsgi.ini
